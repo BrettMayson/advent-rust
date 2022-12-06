@@ -11,14 +11,14 @@ fn main() {
     let mut stacks = stacks.lines().collect::<Vec<_>>();
     stacks.reverse();
     let mut stack_iter = stacks.iter();
-    let mut columns = vec![Vec::with_capacity(50); 9];
-    stack_iter.next().unwrap();
+    let coldef = stack_iter.next().unwrap().trim_end_matches(' ').split(' ').last().unwrap().parse::<usize>().unwrap();
+    let mut columns = vec![Vec::with_capacity(50); coldef];
     for line in stack_iter {
-        for i in 0..9 {
+        for i in 0..coldef {
             columns[i].push(line.chars().nth(i * 4 + 1).unwrap());
         }
     }
-    for i in 0..9 {
+    for i in 0..coldef {
         columns[i].retain(|i| *i != ' ');
     }
     println!("{:?}", columns);
@@ -38,7 +38,7 @@ fn main() {
     }
 
     print!("Part One: ");
-    for i in 0..9 {
+    for i in 0..coldef {
         print!("{}", part1_columns[i][part1_columns[i].len() - 1]);
     }
     println!();
@@ -61,7 +61,7 @@ fn main() {
     }
 
     print!("Part Two: ");
-    for i in 0..9 {
+    for i in 0..coldef {
         print!("{}", part2_columns[i][part2_columns[i].len() - 1]);
     }
     println!();
