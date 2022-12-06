@@ -19,16 +19,19 @@ fn part_1(data: &[&str]) {
             let len = l.len() / 2;
             let b = &l[len..];
             priority(l[0..len].chars().find(|i| b.contains(*i)).unwrap())
-        }).sum::<u32>();
+        })
+        .sum::<u32>();
 }
 
 fn part_2(data: &[&str]) {
-    data.chunks(3).map(|chunk| {
-        let a = chunk[0]
-            .chars()
-            .find(|i| chunk[1].contains(*i) && chunk[2].contains(*i));
-        priority(a.unwrap())
-    }).sum::<u32>();
+    data.chunks(3)
+        .map(|chunk| {
+            let a = chunk[0]
+                .chars()
+                .find(|i| chunk[1].contains(*i) && chunk[2].contains(*i));
+            priority(a.unwrap())
+        })
+        .sum::<u32>();
 }
 
 fn criterion_benchmark(c: &mut Criterion) {
@@ -51,4 +54,3 @@ pub fn priority(c: char) -> u32 {
     }
     panic!("Invalid item");
 }
-

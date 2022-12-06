@@ -40,7 +40,11 @@ fn parse_columns(data: &str) -> (Vec<Vec<char>>, &str) {
 fn part_1(data: &str) {
     let (mut columns, orders) = parse_columns(data);
     for order in orders.lines() {
-        let data = order.split(' ').map(|a| a.parse::<usize>()).filter_map(|a| a.ok()).collect::<Vec<_>>();
+        let data = order
+            .split(' ')
+            .map(|a| a.parse::<usize>())
+            .filter_map(|a| a.ok())
+            .collect::<Vec<_>>();
         for _ in 0..data[0] {
             let bin = columns[data[1] - 1].pop();
             columns[data[2] - 1].push(bin.unwrap());
@@ -51,11 +55,14 @@ fn part_1(data: &str) {
 fn part_2(data: &str) {
     let (mut columns, orders) = parse_columns(data);
     for order in orders.lines() {
-        let data = order.split(' ').map(|a| a.parse::<usize>()).filter_map(|a| a.ok()).collect::<Vec<_>>();
+        let data = order
+            .split(' ')
+            .map(|a| a.parse::<usize>())
+            .filter_map(|a| a.ok())
+            .collect::<Vec<_>>();
         let mut stack = Vec::with_capacity(data[0]);
         for _ in 0..data[0] {
-            let bin = columns[data[1] - 1].pop();
-            stack.push(bin.unwrap());
+            stack.push(columns[data[1] - 1].pop().unwrap());
         }
         stack.reverse();
         columns[data[2] - 1].append(&mut stack);

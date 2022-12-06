@@ -26,7 +26,11 @@ fn main() {
     let mut part1_columns = columns.clone();
 
     for order in orders.lines() {
-        let data = order.split(' ').map(|a| a.parse::<usize>()).filter_map(|a| a.ok()).collect::<Vec<_>>();
+        let data = order
+            .split(' ')
+            .map(|a| a.parse::<usize>())
+            .filter_map(|a| a.ok())
+            .collect::<Vec<_>>();
         for _ in 0..data[0] {
             let bin = part1_columns[data[1] - 1].pop();
             part1_columns[data[2] - 1].push(bin.unwrap());
@@ -42,7 +46,11 @@ fn main() {
     let mut part2_columns = columns.clone();
 
     for order in orders.lines() {
-        let data = order.split(' ').map(|a| a.parse::<usize>()).filter_map(|a| a.ok()).collect::<Vec<_>>();
+        let data = order
+            .split(' ')
+            .map(|a| a.parse::<usize>())
+            .filter_map(|a| a.ok())
+            .collect::<Vec<_>>();
         let mut stack = Vec::with_capacity(data[0]);
         for _ in 0..data[0] {
             let bin = part2_columns[data[1] - 1].pop();
