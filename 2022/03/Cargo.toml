@@ -1,0 +1,11 @@
+[package]
+name = "aoc-3"
+version = "0.1.0"
+authors = ["Brett"]
+
+[dev-dependencies]
+criterion = "0.4"
+
+[[bench]]
+name = "prince"
+harness = false
