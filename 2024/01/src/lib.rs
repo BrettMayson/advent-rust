@@ -2,12 +2,12 @@ fn get_lists(input: &str) -> (Vec<i32>, Vec<i32>) {
     let mut left = Vec::new();
     let mut right = Vec::new();
     for line in input.lines() {
-        let mut parts = line.split(" ");
+        let mut parts = line.split(' ');
         left.push(parts.next().unwrap().parse().unwrap());
         right.push(parts.last().unwrap().parse().unwrap());
     }
-    left.sort();
-    right.sort();
+    left.sort_unstable();
+    right.sort_unstable();
     assert_eq!(left.len(), right.len());
     (left, right)
 }
@@ -39,7 +39,7 @@ fn part1_example() {
 #[test]
 fn part1_input() {
     let (left, right) = get_lists(include_str!("input.txt"));
-    assert_eq!(difference(&left, &right), 1830467);
+    assert_eq!(difference(&left, &right), 1_830_467);
 }
 
 #[test]
@@ -51,5 +51,5 @@ pub fn part2_example() {
 #[test]
 pub fn part2_input() {
     let (left, right) = get_lists(include_str!("input.txt"));
-    assert_eq!(similarity(&left, &right), 26674158);
+    assert_eq!(similarity(&left, &right), 26_674_158);
 }

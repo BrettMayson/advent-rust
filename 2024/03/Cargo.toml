@@ -2,3 +2,7 @@
 name = "aoc-03"
 version = "0.1.0"
 authors = ["Brett"]
+edition = "2021"
+
+[lints]
+workspace = true

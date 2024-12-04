@@ -5,21 +5,21 @@ fn read_levels(input: &str) -> Vec<Vec<i32>> {
         .collect()
 }
 
-fn is_safe(level: Vec<i32>, tolerance: i32) -> bool {
+fn is_safe(level: &[i32], tolerance: i32) -> bool {
     if tolerance == 0 {
         return check(level).is_none();
     }
     for i in 0..level.len() {
-        let mut variation = level.clone();
+        let mut variation = level.to_vec();
         variation.remove(i);
-        if check(variation).is_none() {
+        if check(&variation).is_none() {
             return true;
         }
     }
     false
 }
 
-fn check(level: Vec<i32>) -> Option<usize> {
+fn check(level: &[i32]) -> Option<usize> {
     let increasing = level[0] < level[1];
     for i in 1..level.len() {
         if level[i - 1] == level[i] {
@@ -41,10 +41,7 @@ fn check(level: Vec<i32>) -> Option<usize> {
 fn part1_example() {
     let levels = read_levels(include_str!("example.txt"));
     assert_eq!(
-        levels
-            .into_iter()
-            .filter(|level| is_safe(level.to_vec(), 0))
-            .count(),
+        levels.into_iter().filter(|level| is_safe(level, 0)).count(),
         2
     );
 }
@@ -53,10 +50,7 @@ fn part1_example() {
 fn part1_input() {
     let levels = read_levels(include_str!("input.txt"));
     assert_eq!(
-        levels
-            .into_iter()
-            .filter(|level| is_safe(level.to_vec(), 0))
-            .count(),
+        levels.into_iter().filter(|level| is_safe(level, 0)).count(),
         472
     );
 }
@@ -65,10 +59,7 @@ fn part1_input() {
 fn part2_example() {
     let levels = read_levels(include_str!("example.txt"));
     assert_eq!(
-        levels
-            .into_iter()
-            .filter(|level| is_safe(level.to_vec(), 1))
-            .count(),
+        levels.into_iter().filter(|level| is_safe(level, 1)).count(),
         4
     );
 }
@@ -77,10 +68,7 @@ fn part2_example() {
 fn part2_input() {
     let levels = read_levels(include_str!("input.txt"));
     assert_eq!(
-        levels
-            .into_iter()
-            .filter(|level| is_safe(level.to_vec(), 1))
-            .count(),
+        levels.into_iter().filter(|level| is_safe(level, 1)).count(),
         520
     );
 }

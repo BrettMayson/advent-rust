@@ -87,7 +87,7 @@ fn part1_example() {
 #[test]
 fn part1_input() {
     let instructions = find_instructions(include_str!("input.txt"));
-    assert_eq!(execute(&instructions, 1), 165225049);
+    assert_eq!(execute(&instructions, 1), 165_225_049);
 }
 
 #[test]
@@ -99,5 +99,5 @@ fn part2_example() {
 #[test]
 fn part2_input() {
     let instructions = find_instructions(include_str!("input.txt"));
-    assert_eq!(execute(&instructions, 2), 108830766);
+    assert_eq!(execute(&instructions, 2), 108_830_766);
 }
