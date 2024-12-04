@@ -27,7 +27,6 @@ struct Game {
 
 impl Game {
     fn from_str(s: &str) -> Self {
-        println!("Game {}", s);
         let (game, hands) = s.split_once(": ").unwrap();
         let id = game.split_once(' ').unwrap().1.parse().unwrap();
         let hands = hands.split("; ").map(|hands| {
