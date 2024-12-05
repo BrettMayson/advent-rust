@@ -5,6 +5,7 @@ members = [
     "02",
     "03",
     "04",
+    "05",
 ]
 
 [workspace.lints.clippy]
