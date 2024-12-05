@@ -37,7 +37,7 @@ fn matches_rules(rules: &Rules, update: &Update) -> bool {
 // sum the middle number of all updates that match the rules
 fn count_middles(updates: &Updates) -> usize {
     updates.iter().fold(0, |acc, update| {
-        let middle = update[(update.len() as f32 / 2.0).ceil() as usize - 1];
+        let middle = update[update.len() / 2];
         acc + middle as usize
     })
 }
