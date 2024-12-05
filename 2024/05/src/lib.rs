@@ -34,10 +34,10 @@ fn matches_rules(rules: &Rules, update: &Update) -> bool {
     true
 }
 
-fn count_middles(updates: &Updates) -> usize {
+fn count_middles(updates: &Updates) -> u32 {
     updates
         .iter()
-        .fold(0, |acc, update| acc + update[update.len() / 2] as usize)
+        .fold(0, |acc, update| acc + update[update.len() / 2])
 }
 
 #[test]
